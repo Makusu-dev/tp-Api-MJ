@@ -194,7 +194,7 @@ app.post("/save-article", async (request, response) => {
 app.delete('/article/:id', (request, response) => {
 
     // Il faut l'id en entier
-    const id = parseInt(request.params.id);
+    const id = request.params.id;
 
     // trouver l'index
     const foundArticleIndex = DB_Articles.findIndex(article => article.id === id);
@@ -207,7 +207,7 @@ app.delete('/article/:id', (request, response) => {
     // supprimer grace à l'index
     DB_Articles.slice(foundArticleIndex, 1);
 
-    return response.json({ code: "200", message: `Supprimera un article id ${id}`, data: null });
+    return response.json({ code: "200", message: `Article ${id} supprimé avec succès`, data: null });
 });
 
 
