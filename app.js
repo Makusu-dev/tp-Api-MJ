@@ -29,6 +29,14 @@ let DB_USERS = [
     { email: 'toto@gmail.com', password: '12345', pseudo: 'Toto', cityCode: '44300', city: 'NutellaCrevette', phone: '0650660000' },
 ];
 
+// SWAGGER
+// Init swagger middleware
+const swaggerUI = require('swagger-ui-express');
+const swaggerDocument = require('./swagger_output.json');
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+
+
 function generetePassword(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?';
     let password = '';
