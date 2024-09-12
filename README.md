@@ -101,7 +101,7 @@ Réinitialise le mot de passe d'un utilisateur en générant un nouveau mot de p
 }
 ```
 
-### Gestion des Utilisateurs
+### Gestion des Articles
 
 #### GET /articles
 
