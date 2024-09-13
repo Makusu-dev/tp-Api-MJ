@@ -63,7 +63,7 @@ app.post("/login", async (request, response) => {
     }
 
     // générer un token
-    const token = await jwt.sign({ email: "toto@gmail.com" }, jwtSecretKey, { expiresIn: '10s' });
+    const token = await jwt.sign({ email: "toto@gmail.com" }, jwtSecretKey, { expiresIn: '60s' });
 
     return response.json({ code: "200", message: "Vous êtes connecté(e)", data: token });
 });
@@ -151,6 +151,32 @@ app.get("/article/:id", async (request, response) => {
 
     return response.json({ code: "200", message: `L'article a été modifié avec succès`, data: foundArticle });
 
+});
+
+app.get("/check", (request, response) => {
+    // Si token null alors erreur
+    if (request.headers.authorization == undefined || !request.headers.authorization) {
+        return response.json({ message: "Token null" });
+    }
+
+    // Extraire le token (qui est bearer)
+    const token = request.headers.authorization.substring(7);
+
+    // par defaut le result est null
+    let result = null;
+    
+    // Si reussi à générer le token sans crash
+    try {
+        result = jwt.verify(token, jwtSecretKey);
+    } catch {
+    }
+
+    // Si result null donc token incorrect
+    if (!result) {
+        return response.json({ message: "token pas bon ou déconnecté(e)" });
+    }
+
+    return response.json({ message: "Vous êtes toujours connecté(e)" });
 });
 
 /**
