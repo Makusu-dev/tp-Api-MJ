@@ -36,6 +36,11 @@ Le serveur sera accessible sur http://localhost:3000.
 
 #### POST /login
 
+Les comptes mock :
+- isaac@gmail.com | password 
+- tata@gmail.com | 123456
+- toto@gmail.com | 12345
+
 Permet à un utilisateur de se connecter en fournissant son email et mot de passe. Retourne un token JWT.
 
 ```json
@@ -117,7 +122,7 @@ Récupère la liste complète des articles disponibles.
 }
 ```
 
-#### GET /article/:id
+#### GET /articles/:id
 
 Récupère un article spécifique par son id.
 
@@ -131,7 +136,7 @@ Récupère un article spécifique par son id.
 }
 ```
 
-#### POST /save-article
+#### POST /articles/save
 
 Crée ou met à jour un article. Si un id est présent dans la requête, l'article existant sera mis à jour, sinon un nouvel article sera créé.
 
@@ -145,7 +150,7 @@ Crée ou met à jour un article. Si un id est présent dans la requête, l'artic
 }
 ```
 
-#### DELETE /article/:id
+#### DELETE /articles/:id
 
 Supprime un article par son id.
 
