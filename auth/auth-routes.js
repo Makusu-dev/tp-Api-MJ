@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { httpApiResponse } = require('../core/http-library');
 const { logger } = require('../core/logger');
+const { v4: uuidv4 } = require('uuid');
 
 const jwt = require('jsonwebtoken');
 const { stringify } = require('uuid');

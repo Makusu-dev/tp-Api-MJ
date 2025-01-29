@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { httpApiResponse } = require('../core/http-library');
 const { middlewareVerifyToken } = require('../core/middlewares');
+const { v4: uuidv4 } = require('uuid');
 
 let DB_Articles = [
     { id: '1', title: 'Premier article', desc: 'Contenu du premier article', author: 'Isaac', imgPath: 'https://dogtime.com/wp-content/uploads/sites/12/2011/01/GettyImages-653001154-e1691965000531.jpg' },
@@ -37,7 +38,7 @@ router.get("/:id", async (request, response) => {
         return httpApiResponse(response, "721", `L'article n'existe pas`, null);
     }
 
-    return httpApiResponse(response, "200", `L'article a été modifié avec succès`, foundArticle);
+    return httpApiResponse(response, "200", `L'article a été récupéré avec succès`, foundArticle);
 
 });
 
