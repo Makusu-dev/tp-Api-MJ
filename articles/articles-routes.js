@@ -94,7 +94,7 @@ router.delete('/:id', (request, response) => {
     }
 
     // supprimer grace à l'index
-    DB_Articles.slice(foundArticleIndex, 1);
+    DB_Articles.splice(foundArticleIndex, 1);
 
     return httpApiResponse(response, "200", `Article ${id} supprimé avec succès`, null);
 });
