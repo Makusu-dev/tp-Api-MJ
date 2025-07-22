@@ -26,6 +26,8 @@ app.use('/articles', articlesRouter);
 const messagesRouter = require('./messages/messages-routes');
 app.use('/messages', messagesRouter);
 
+const moviesRouter = require('./movies/movie-routes');
+app.use('/movies', moviesRouter);
 
 // Démarrer le serveur avec le port 3000
 app.listen(3000, () => {
